@@ -331,69 +331,6 @@ applicable agreement for further details.
 		(rectangle (rect 16 16 144 64))
 	)
 )
-(symbol
-	(rect 96 -128 440 -16)
-	(text "shift_sub_84" (rect 5 0 68 12)(font "Arial" ))
-	(text "inst" (rect 8 96 25 108)(font "Arial" ))
-	(port
-		(pt 0 32)
-		(input)
-		(text "Dividend[BUS_WIDTH*2-1..0]" (rect 0 0 148 12)(font "Arial" ))
-		(text "Dividend[BUS_WIDTH*2-1..0]" (rect 21 27 169 39)(font "Arial" ))
-		(line (pt 0 32)(pt 16 32)(line_width 3))
-	)
-	(port
-		(pt 0 48)
-		(input)
-		(text "Divisor[BUS_WIDTH-1..0]" (rect 0 0 129 12)(font "Arial" ))
-		(text "Divisor[BUS_WIDTH-1..0]" (rect 21 43 150 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
-	)
-	(port
-		(pt 0 64)
-		(input)
-		(text "Clk" (rect 0 0 16 12)(font "Arial" ))
-		(text "Clk" (rect 21 59 37 71)(font "Arial" ))
-		(line (pt 0 64)(pt 16 64))
-	)
-	(port
-		(pt 0 80)
-		(input)
-		(text "Reset" (rect 0 0 29 12)(font "Arial" ))
-		(text "Reset" (rect 21 75 50 87)(font "Arial" ))
-		(line (pt 0 80)(pt 16 80))
-	)
-	(port
-		(pt 344 32)
-		(output)
-		(text "Quotient[BUS_WIDTH-1..0]" (rect 0 0 135 12)(font "Arial" ))
-		(text "Quotient[BUS_WIDTH-1..0]" (rect 209 27 323 39)(font "Arial" ))
-		(line (pt 344 32)(pt 328 32)(line_width 3))
-	)
-	(port
-		(pt 344 48)
-		(output)
-		(text "Remainder[BUS_WIDTH-1..0]" (rect 0 0 147 12)(font "Arial" ))
-		(text "Remainder[BUS_WIDTH-1..0]" (rect 199 43 323 55)(font "Arial" ))
-		(line (pt 344 48)(pt 328 48)(line_width 3))
-	)
-	(port
-		(pt 344 64)
-		(output)
-		(text "Overflow" (rect 0 0 44 12)(font "Arial" ))
-		(text "Overflow" (rect 286 59 323 71)(font "Arial" ))
-		(line (pt 344 64)(pt 328 64))
-	)
-	(parameter
-		"BUS_WIDTH"
-		"4"
-		""
-		(type "PARAMETER_SIGNED_DEC")	)
-	(drawing
-		(rectangle (rect 16 16 328 96))
-	)
-	(annotation_block (parameter)(rect 248 -160 440 -128))
-)
 (connector
 	(pt -48 -64)
 	(pt 96 -64)
