@@ -23,7 +23,7 @@ applicable agreement for further details.
 	(input)
 	(rect -232 -24 -64 -8)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "CLK" (rect 5 0 27 12)(font "Arial" ))
+	(text "CLK" (rect 5 0 26 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -155,7 +155,7 @@ applicable agreement for further details.
 )
 (symbol
 	(rect 80 -64 360 16)
-	(text "commander_67" (rect 5 0 80 12)(font "Arial" ))
+	(text "commodore_67" (rect 5 0 80 12)(font "Arial" ))
 	(text "inst" (rect 8 64 25 76)(font "Arial" ))
 	(port
 		(pt 0 32)
@@ -180,13 +180,13 @@ applicable agreement for further details.
 	)
 	(parameter
 		"BUS_WIDTH"
-		"4"
+		"8"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
 		(rectangle (rect 16 16 264 64))
 	)
-	(annotation_block (parameter)(rect 168 -96 360 -64))
+	(annotation_block (parameter)(rect 360 -96 552 -64))
 )
 (connector
 	(pt -64 -16)
