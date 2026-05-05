@@ -7,25 +7,36 @@ module Data_Path #(
 	parameter WORD_WIDTH = 8, 
 	parameter ADDRESS_WIDTH = 5, 
 	parameter OP_CODE_WIDTH = 3 
-	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus, Z_Out);
-
+	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus, Z_Out,
+	//Testing only
+	AC_test, DR_test, AR_test, PC_test, IR_test);
+	// testing only
+	output [WORD_WIDTH - 1 : 0] AC_test;
+	output [WORD_WIDTH - 1 : 0] DR_test;
+	output [ADDRESS_WIDTH - 1 : 0] AR_test;
+	output [ADDRESS_WIDTH - 1 : 0] PC_test;
+	output [OP_CODE_WIDTH - 1 : 0] IR_test;
+	
+	// Testing only
+	assign AC_test = AC;
+	assign DR_test = DR;
+	assign AR_test = AR;
+	assign PC_test = PC;
+	assign IR_test = IR;
 	
 	input Clk;
 	input [CONTROL_WIDTH - 1 : 0] Control_Bus;
 	input [WORD_WIDTH - 1 : 0] Mem_OUT;
 	// Mem_IN and Mem_OUT is from the perspective of the memory
-	output reg [ADDRESS_WIDTH - 1 : 0] Addr_Sel;
-	output reg [WORD_WIDTH - 1 : 0] Mem_IN;
-	output reg [OP_CODE_WIDTH - 1 : 0] IR_Out;
-	output reg Z_Out;
+	output [ADDRESS_WIDTH - 1 : 0] Addr_Sel;
+	output [WORD_WIDTH - 1 : 0] Mem_IN;
+	output [OP_CODE_WIDTH - 1 : 0] IR_Out;
+	output Z_Out;
 
 	// Internal registers
 	reg [WORD_WIDTH - 1 : 0] AC, DR; 
 	reg [ADDRESS_WIDTH - 1 : 0] AR, PC;
 	reg [OP_CODE_WIDTH - 1 : 0] IR;	
-	// Not WORD_WIDTH to accomadate more addresses in the future
-	// Connects MEMBus, PCBus, and DRBus
-	reg [OP_CODE_WIDTH + ADDRESS_WIDTH - 1 : 0] Data_Bus;
 	// For Jeq
 	reg Z;
 	
@@ -34,18 +45,28 @@ module Data_Path #(
 	wire [1 : 0] ALUSel;
 	assign {MEMBus, ARld, PCld, PCInc, PCBus, DRld, DRBus, ALUSel, ACld, IRld} = Control_Bus;
 	
+	// Not WORD_WIDTH to accomadate more addresses in the future
+	// Connects MEMBus, PCBus, and DRBus to Data_Bus
+	wire [OP_CODE_WIDTH + ADDRESS_WIDTH - 1 : 0] Data_Bus;
+	assign Data_Bus = MEMBus ? Mem_OUT : (PCBus ? PC : (DRBus ? DR : {(OP_CODE_WIDTH + ADDRESS_WIDTH){1'b0}}));
+	
 	// Add if ALUSel 10, subtract when 01, and pass through when 00.
 	// 11 Can be set to multiplication or divide later
 	wire [WORD_WIDTH - 1 : 0] ALU;
-	assign ALU = ALUSel[1] ? (ALUSel[0] ? AC + Data_Bus : Data_Bus) : (ALUSel[0] ? AC - Data_Bus : Data_Bus);
+	assign ALU = ALUSel[1] ? (ALUSel[0] ? Data_Bus : AC + Data_Bus) : (ALUSel[0] ? AC - Data_Bus : Data_Bus);
 
+	// assign outputs
+	assign Mem_IN = AC;
+	assign IR_Out = IR;
+	assign Addr_Sel = AR;
+	assign Z_Out = Z;
 	
 	// May change to negedge if control unit is posedge
 	always @(posedge Clk) begin
 		// bus selection
 		if (MEMBus) begin
 		
-			Data_Bus <= Mem_OUT;
+			//Data_Bus = Mem_OUT;
 			
 			//fetch 2, add 1, sub 1
 			if (DRld) DR <= Data_Bus;
@@ -57,14 +78,14 @@ module Data_Path #(
 		end else if (PCBus) begin
 			
 			// Connect PC to data bus with unused MSB being 0
-			Data_Bus <= {{OP_CODE_WIDTH{1'b0}}, PC};
+			//Data_Bus = {{OP_CODE_WIDTH{1'b0}}, PC};
 			
 			//fetch 1
 			if (ARld) AR <= Data_Bus;
 				
 		end else if (DRBus) begin
 			
-			Data_Bus <= DR;
+			//Data_Bus = DR;
 			
 			//fetch 3
 			if (ARld) AR <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
@@ -79,7 +100,7 @@ module Data_Path #(
 			//fetch 3
 			// Only Op-code bits
 			if (IRld) IR <= Data_Bus[WORD_WIDTH - 1 : WORD_WIDTH - OP_CODE_WIDTH];
-		end
+		end 
 		
 		// Z is updated ONLY when AC is loaded from a subtraction
       if (ACld && ALUSel == 2'b01)
@@ -88,10 +109,5 @@ module Data_Path #(
 		//fetch 2
 		if (PCInc) PC <= PC + 1'b1;
 			
-		// assign outputs
-		Mem_IN <= AC;
-		IR_Out <= IR;
-		Addr_Sel <= AR;
-		Z_Out <= Z;
 	end
 endmodule
