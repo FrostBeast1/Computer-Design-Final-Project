@@ -3,7 +3,7 @@
 // dmp/exit handled by control unit
 
 module Data_Path #(
-	parameter CONTROL_WIDTH = 12, // Doesn't include memory read or write
+	parameter CONTROL_WIDTH = 11, // Doesn't include memory read or write
 	parameter WORD_WIDTH = 8, 
 	parameter ADDRESS_WIDTH = 5, 
 	parameter OP_CODE_WIDTH = 3 
