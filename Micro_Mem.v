@@ -1,0 +1,39 @@
+// Microcode Memory: 16 depth, 20-bit word address space
+// General Layout:
+//  [SELECT, MICRO_OPS, NXT_ADDR]
+// Specific Layout:
+//  [SELECT, MemDump, MemWrite, MemRead, ARld, PCld, PCInc, DRld, DRBus, ALUSel[1:0], ACld, ACBus, IRld, Next Address[3:0]]
+
+module Micro_Memory #(
+    // _C -> Control
+    parameter MICRO_WIDTH = 15, // Does not include SEL
+    parameter ADDR_C_WIDTH = 4,
+    parameter WORD_WIDTH = MICRO_WIDTH + ADDR_C_WIDTH + 1, // Includes SEL, (20 by default)
+    parameter DEPTH = 1 << ADDR_C_WIDTH // Calculate 2^n address spaces (16 by default)
+)(
+    clk_i, addr_i, sel_o, micro_o, addr_o
+);
+
+input wire clk_i;
+input wire [ADDR_C_WIDTH-1:0] addr_i;
+output wire sel_o;
+output wire [MICRO_WIDTH-1:0] micro_o;
+output wire [ADDR_C_WIDTH-1:0] addr_o;
+
+// Internal memory array
+reg [WORD_WIDTH-1:0] micro_mem [0:DEPTH-1];
+
+// Output buffer
+reg [WORD_WIDTH-1:0] mem_out;
+
+// Assign output reg to output wires
+assign sel_o = mem_out[WORD_WIDTH-1];
+assign micro_o = mem_out[WORD_WIDTH-2:WORD_WIDTH-MICRO_WIDTH-1];
+assign addr_o = mem_out[ADDR_C_WIDTH-1:0];
+
+// Memory output updates on negedge
+always @(negedge clk_i) begin
+    mem_out <= micro_mem[addr_i];
+end
+
+endmodule
