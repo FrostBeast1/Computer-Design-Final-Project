@@ -9,20 +9,21 @@ module Data_Path #(
 	parameter OP_CODE_WIDTH = 3 
 	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus, Z_Out,
 	//Testing only
-	AC_test, DR_test, AR_test, PC_test, IR_test);
+	//AC_test, DR_test, AR_test, PC_test, IR_test
+	);
 	// testing only
-	output [WORD_WIDTH - 1 : 0] AC_test;
-	output [WORD_WIDTH - 1 : 0] DR_test;
-	output [ADDRESS_WIDTH - 1 : 0] AR_test;
-	output [ADDRESS_WIDTH - 1 : 0] PC_test;
-	output [OP_CODE_WIDTH - 1 : 0] IR_test;
+	//output [WORD_WIDTH - 1 : 0] AC_test;
+	//output [WORD_WIDTH - 1 : 0] DR_test;
+	//output [ADDRESS_WIDTH - 1 : 0] AR_test;
+	//output [ADDRESS_WIDTH - 1 : 0] PC_test;
+	//output [OP_CODE_WIDTH - 1 : 0] IR_test;
 	
 	// Testing only
-	assign AC_test = AC;
-	assign DR_test = DR;
-	assign AR_test = AR;
-	assign PC_test = PC;
-	assign IR_test = IR;
+	//assign AC_test = AC;
+	//assign DR_test = DR;
+	//assign AR_test = AR;
+	//assign PC_test = PC;
+	//assign IR_test = IR;
 	
 	input Clk;
 	input [CONTROL_WIDTH - 1 : 0] Control_Bus;

@@ -74,3 +74,4 @@ output_files/*
 !output_files/*.cdf
 PLLJ_PLLSPE_INFO.txt
 lab3.qsf
+finalProject.qsf
