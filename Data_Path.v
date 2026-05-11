@@ -7,9 +7,9 @@ module Data_Path #(
 	parameter WORD_WIDTH = 8, 
 	parameter ADDRESS_WIDTH = 5, 
 	parameter OP_CODE_WIDTH = 3 
-	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus, Z_Out,
+	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus,
 	//Testing only
-	//AC_test, DR_test, AR_test, PC_test, IR_test
+	//Z_Out,AC_test, DR_test, AR_test, PC_test, IR_test
 	);
 	// testing only
 	//output [WORD_WIDTH - 1 : 0] AC_test;
@@ -91,9 +91,12 @@ module Data_Path #(
 			//fetch 3
 			if (ARld) AR <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
 				
-			//jump 1
-			if (PCld) PC <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
-			
+			//jump/jeq 1
+			//if the instruction is jeq, Z must be high to load PC
+			if (PCld && (IR == 3'b011) && Z) begin
+				PC <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
+			end else if (PCld && (IR != 3'b011)) PC <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
+ 			
 			//add 2, sub 2
 			//ALUSel must be 10 to add or 01 to subtract
 			if (ACld) AC <= ALU;
