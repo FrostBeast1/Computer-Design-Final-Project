@@ -65,7 +65,7 @@ module Data_Path #(
 	
 	
 	// May change to negedge if control unit is posedge
-	always @(posedge Clk) begin
+	always @(negedge Clk) begin
 		// bus selection
 		if (MEMBus) begin
 		

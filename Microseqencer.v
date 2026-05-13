@@ -13,20 +13,21 @@ module Microseqencer #(
 input wire clk_i;
 input wire [OP_WIDTH-1:0] op_i;
 output [MICRO_WIDTH-1:0] micro_o;
-output [ADDR_WIDTH-1+1:0] debug_o;
+output [18:0] debug_o;
 
 // Local Address register
-reg [ADDR_WIDTH-1:0] next_addr;
+// No longer needed b/c memory has internal read register (discuss in report)
+// reg [ADDR_WIDTH-1:0] next_addr;
 
 // Interconnecting wires
-wire [ADDR_WIDTH-1:0] MUX_to_reg;
+wire [ADDR_WIDTH-1:0] MUX_to_mem;
 
 // Wires to split Micro_Memory output
 wire select;
 wire [MICRO_WIDTH-2:0] micro_op;
 wire [ADDR_WIDTH-1:0] mem_to_MUX;
 
-assign debug_o = {select, MUX_to_reg};
+assign debug_o = {select, micro_o, MUX_to_mem};
 
 // Sub-module Instantiations
 Micro_MUX #(
@@ -36,19 +37,21 @@ Micro_MUX #(
     .sel_i(select),
     .op_i(op_i),
     .addr_i(mem_to_MUX),
-    .addr_o(MUX_to_reg)
+    .addr_o(MUX_to_mem)
 );
 
 // Memory output updates on negedge
 Micro_Memory micro_mem (
     .clock(clk_i),
-    .address(next_addr),
+    .address(MUX_to_mem),
     .q({select, micro_o, mem_to_MUX})
 );
 
+// No longer needed b/c memory has internal read register (discuss in report)
+
 // Next address register updates on positive edge
-always @(posedge clk_i) begin
-    next_addr <= MUX_to_reg;
-end
+//always @(posedge clk_i) begin
+//    next_addr <= MUX_to_reg;
+//end
 
 endmodule
