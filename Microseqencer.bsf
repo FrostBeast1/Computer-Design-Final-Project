@@ -63,7 +63,7 @@ applicable agreement for further details.
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
 		"MICRO_WIDTH"
-		"15"
+		"14"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing

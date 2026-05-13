@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 424 128)
+	(rect 16 16 424 224)
 	(text "Data_Path" (rect 5 0 47 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(text "inst" (rect 8 192 20 204)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -72,6 +72,41 @@ applicable agreement for further details.
 		(text "Z_Out" (rect 360 75 387 87)(font "Arial" ))
 		(line (pt 408 80)(pt 392 80)(line_width 1))
 	)
+	(port
+		(pt 408 96)
+		(output)
+		(text "AC_test[WORD_WIDTH-1..0]" (rect 0 0 128 12)(font "Arial" ))
+		(text "AC_test[WORD_WIDTH-1..0]" (rect 259 91 387 103)(font "Arial" ))
+		(line (pt 408 96)(pt 392 96)(line_width 3))
+	)
+	(port
+		(pt 408 112)
+		(output)
+		(text "DR_test[WORD_WIDTH-1..0]" (rect 0 0 128 12)(font "Arial" ))
+		(text "DR_test[WORD_WIDTH-1..0]" (rect 259 107 387 119)(font "Arial" ))
+		(line (pt 408 112)(pt 392 112)(line_width 3))
+	)
+	(port
+		(pt 408 128)
+		(output)
+		(text "AR_test[ADDRESS_WIDTH-1..0]" (rect 0 0 146 12)(font "Arial" ))
+		(text "AR_test[ADDRESS_WIDTH-1..0]" (rect 241 123 387 135)(font "Arial" ))
+		(line (pt 408 128)(pt 392 128)(line_width 3))
+	)
+	(port
+		(pt 408 144)
+		(output)
+		(text "PC_test[ADDRESS_WIDTH-1..0]" (rect 0 0 142 12)(font "Arial" ))
+		(text "PC_test[ADDRESS_WIDTH-1..0]" (rect 245 139 387 151)(font "Arial" ))
+		(line (pt 408 144)(pt 392 144)(line_width 3))
+	)
+	(port
+		(pt 408 160)
+		(output)
+		(text "IR_test[OP_CODE_WIDTH-1..0]" (rect 0 0 138 12)(font "Arial" ))
+		(text "IR_test[OP_CODE_WIDTH-1..0]" (rect 249 155 387 167)(font "Arial" ))
+		(line (pt 408 160)(pt 392 160)(line_width 3))
+	)
 	(parameter
 		"CONTROL_WIDTH"
 		"11"
@@ -93,7 +128,7 @@ applicable agreement for further details.
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(drawing
-		(rectangle (rect 16 16 392 96)(line_width 1))
+		(rectangle (rect 16 16 392 192)(line_width 1))
 	)
 	(annotation_block (parameter)(rect 424 -64 524 16))
 )

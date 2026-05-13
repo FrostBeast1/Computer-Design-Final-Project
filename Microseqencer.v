@@ -5,7 +5,7 @@
 module Microseqencer #(
     parameter OP_WIDTH = 3,
     parameter ADDR_WIDTH = 4,
-    parameter MICRO_WIDTH = 15
+    parameter MICRO_WIDTH = 14
 ) (
     clk_i, op_i, micro_o, debug_o
 );

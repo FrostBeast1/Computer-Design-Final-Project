@@ -9,21 +9,23 @@ module Data_Path #(
 	parameter OP_CODE_WIDTH = 3 
 	)(Clk, Mem_IN, Mem_OUT, Addr_Sel, IR_Out, Control_Bus,
 	//Testing only
-	//Z_Out,AC_test, DR_test, AR_test, PC_test, IR_test
+	Z_Out,AC_test, DR_test, AR_test, PC_test, IR_test
 	);
 	// testing only
-	//output [WORD_WIDTH - 1 : 0] AC_test;
-	//output [WORD_WIDTH - 1 : 0] DR_test;
-	//output [ADDRESS_WIDTH - 1 : 0] AR_test;
-	//output [ADDRESS_WIDTH - 1 : 0] PC_test;
-	//output [OP_CODE_WIDTH - 1 : 0] IR_test;
+	output [WORD_WIDTH - 1 : 0] AC_test;
+	output [WORD_WIDTH - 1 : 0] DR_test;
+	output [ADDRESS_WIDTH - 1 : 0] AR_test;
+	output [ADDRESS_WIDTH - 1 : 0] PC_test;
+	output [OP_CODE_WIDTH - 1 : 0] IR_test;
+	output Z_Out;
 	
 	// Testing only
-	//assign AC_test = AC;
-	//assign DR_test = DR;
-	//assign AR_test = AR;
-	//assign PC_test = PC;
-	//assign IR_test = IR;
+	assign AC_test = AC;
+	assign DR_test = DR;
+	assign AR_test = AR;
+	assign PC_test = PC;
+	assign IR_test = IR;
+	assign Z_Out = Z;
 	
 	input Clk;
 	input [CONTROL_WIDTH - 1 : 0] Control_Bus;
@@ -32,7 +34,7 @@ module Data_Path #(
 	output [ADDRESS_WIDTH - 1 : 0] Addr_Sel;
 	output [WORD_WIDTH - 1 : 0] Mem_IN;
 	output [OP_CODE_WIDTH - 1 : 0] IR_Out;
-	output Z_Out;
+	
 
 	// Internal registers
 	reg [WORD_WIDTH - 1 : 0] AC, DR; 
@@ -60,7 +62,7 @@ module Data_Path #(
 	assign Mem_IN = AC;
 	assign IR_Out = IR;
 	assign Addr_Sel = AR;
-	assign Z_Out = Z;
+	
 	
 	// May change to negedge if control unit is posedge
 	always @(posedge Clk) begin
