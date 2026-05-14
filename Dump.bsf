@@ -20,54 +20,61 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 336 96)
-	(text "Microseqencer" (rect 5 0 64 12)(font "Arial" ))
-	(text "inst" (rect 8 64 20 76)(font "Arial" ))
+	(rect 16 16 320 128)
+	(text "Dump" (rect 5 0 29 12)(font "Arial" ))
+	(text "inst" (rect 8 96 20 108)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
-		(text "clk_i" (rect 0 0 17 12)(font "Arial" ))
-		(text "clk_i" (rect 21 27 38 39)(font "Arial" ))
+		(text "Clk" (rect 0 0 12 12)(font "Arial" ))
+		(text "Clk" (rect 21 27 33 39)(font "Arial" ))
 		(line (pt 0 32)(pt 16 32)(line_width 1))
 	)
 	(port
 		(pt 0 48)
 		(input)
-		(text "op_i[OP_WIDTH-1..0]" (rect 0 0 89 12)(font "Arial" ))
-		(text "op_i[OP_WIDTH-1..0]" (rect 21 43 110 55)(font "Arial" ))
-		(line (pt 0 48)(pt 16 48)(line_width 3))
+		(text "Op_Cmd" (rect 0 0 37 12)(font "Arial" ))
+		(text "Op_Cmd" (rect 21 43 58 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
-		(pt 320 32)
+		(pt 304 32)
 		(output)
-		(text "micro_o[MICRO_WIDTH-1..0]" (rect 0 0 126 12)(font "Arial" ))
-		(text "micro_o[MICRO_WIDTH-1..0]" (rect 173 27 299 39)(font "Arial" ))
-		(line (pt 320 32)(pt 304 32)(line_width 3))
+		(text "Dump_Addr[ADDRESS_WIDTH-1..0]" (rect 0 0 161 12)(font "Arial" ))
+		(text "Dump_Addr[ADDRESS_WIDTH-1..0]" (rect 122 27 283 39)(font "Arial" ))
+		(line (pt 304 32)(pt 288 32)(line_width 3))
 	)
 	(port
-		(pt 320 48)
+		(pt 304 48)
 		(output)
-		(text "debug_o[18..0]" (rect 0 0 57 12)(font "Arial" ))
-		(text "debug_o[18..0]" (rect 242 43 299 55)(font "Arial" ))
-		(line (pt 320 48)(pt 304 48)(line_width 3))
+		(text "Dump_Active" (rect 0 0 57 12)(font "Arial" ))
+		(text "Dump_Active" (rect 226 43 283 55)(font "Arial" ))
+		(line (pt 304 48)(pt 288 48)(line_width 1))
+	)
+	(port
+		(pt 304 64)
+		(output)
+		(text "Dump_Done" (rect 0 0 51 12)(font "Arial" ))
+		(text "Dump_Done" (rect 232 59 283 71)(font "Arial" ))
+		(line (pt 304 64)(pt 288 64)(line_width 1))
 	)
 	(parameter
-		"OP_WIDTH"
-		"3"
+		"ADDRESS_WIDTH"
+		"5"
 		""
 		(type "PARAMETER_SIGNED_DEC")	)
 	(parameter
-		"ADDR_WIDTH"
-		"4"
+		"LAST_INSTR_ADDR"
+		"01000"
 		""
-		(type "PARAMETER_SIGNED_DEC")	)
+		(type "PARAMETER_UNSIGNED_BIN")	)
 	(parameter
-		"MICRO_WIDTH"
-		"14"
+		"MAX_ADDRESS"
+		"11111"
 		""
-		(type "PARAMETER_SIGNED_DEC")	)
+		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
-		(rectangle (rect 16 16 304 64)(line_width 1))
+		(rectangle (rect 16 16 288 96)(line_width 1))
 	)
-	(annotation_block (parameter)(rect 336 -64 436 16))
+	(annotation_block (parameter)(rect 320 -64 420 16))
 )
