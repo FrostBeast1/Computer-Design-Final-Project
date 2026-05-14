@@ -1,7 +1,7 @@
 module Dump #(
     parameter ADDRESS_WIDTH   = 5,
-    parameter LAST_INSTR_ADDR = 5'b01000,
-    parameter MAX_ADDRESS     = 5'b11111
+    parameter START_ADDR = 5'b11011,
+    parameter MAX_ADDRESS = 5'b11111
 )(
     input  wire Clk,
 
@@ -21,18 +21,19 @@ module Dump #(
     //assign Mem_Read_Dump   = Dump_Active;
     //assign Mem_Enable_Dump = Dump_Active;
 
-    always @(posedge Clk) begin
+    always @(negedge Clk) begin
         //if (!triggered && (CPU_Mon == LAST_INSTR_ADDR)) begin
 		  if (!triggered && Op_Cmd) begin
             triggered   <= 1'b1;
             Dump_Active <= 1'b1;
-            Dump_Addr   <= {ADDRESS_WIDTH{1'b0}};
+            Dump_Addr   <= START_ADDR;
             Dump_Done   <= 1'b0;
         end
 
         if (Dump_Active && !Dump_Done) begin
             if (Dump_Addr == MAX_ADDRESS) begin
                 Dump_Done <= 1'b1;
+					 Dump_Active <= 1'b0;
             end else begin
                 Dump_Addr <= Dump_Addr + 1'b1;
             end
