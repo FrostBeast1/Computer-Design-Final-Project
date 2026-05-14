@@ -5,8 +5,8 @@ module Dump #(
 )(
     input  wire Clk,
 
-    // Connected to micro_o[12]
-    input  wire  Op_Cmd,
+	// Connected to micro_o[13] / Data_Path_Control[13] (MemDump)
+	input  wire  Op_Cmd,
 
     // Address controller
     output reg  [ADDRESS_WIDTH-1:0]  Dump_Addr,
