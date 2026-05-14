@@ -67,6 +67,7 @@ set_global_assignment -name MIF_FILE micro_mem.mif
 set_global_assignment -name QIP_FILE Micro_Memory.qip
 set_global_assignment -name VECTOR_WAVEFORM_FILE microsequencer_test.vwf
 set_global_assignment -name MIF_FILE Main_Memory.mif
+set_global_assignment -name QIP_FILE Main_Memory.qip
 set_global_assignment -name VECTOR_WAVEFORM_FILE All_But_DMP.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
