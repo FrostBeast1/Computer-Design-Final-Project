@@ -132,6 +132,22 @@ applicable agreement for further details.
 		(line (pt 78 12)(pt 82 8))
 	)
 )
+(pin
+	(output)
+	(rect 1376 424 1552 440)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "Memory[7..0]" (rect 90 0 156 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
 (symbol
 	(rect 352 528 760 736)
 	(text "Data_Path" (rect 5 0 56 12)(font "Arial" ))
@@ -243,7 +259,7 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 392 192))
 	)
-	(annotation_block (parameter)(rect 432 736 648 808))
+	(annotation_block (parameter)(rect 184 672 352 736))
 )
 (symbol
 	(rect 1016 400 1232 528)
@@ -351,14 +367,14 @@ applicable agreement for further details.
 		(pt 320 32)
 		(output)
 		(text "micro_o[MICRO_WIDTH-1..0]" (rect 0 0 147 12)(font "Arial" ))
-		(text "micro_o[MICRO_WIDTH-1..0]" (rect 175 27 299 39)(font "Arial" ))
+		(text "micro_o[MICRO_WIDTH-1..0]" (rect 175 27 322 39)(font "Arial" ))
 		(line (pt 320 32)(pt 304 32)(line_width 3))
 	)
 	(port
 		(pt 320 48)
 		(output)
 		(text "debug_o[18..0]" (rect 0 0 73 12)(font "Arial" ))
-		(text "debug_o[18..0]" (rect 238 43 299 55)(font "Arial" ))
+		(text "debug_o[18..0]" (rect 238 43 311 55)(font "Arial" ))
 		(line (pt 320 48)(pt 304 48)(line_width 3))
 	)
 	(parameter
@@ -508,21 +524,21 @@ applicable agreement for further details.
 		(pt 304 32)
 		(output)
 		(text "Dump_Addr[ADDRESS_WIDTH-1..0]" (rect 0 0 182 12)(font "Arial" ))
-		(text "Dump_Addr[ADDRESS_WIDTH-1..0]" (rect 129 27 283 39)(font "Arial" ))
+		(text "Dump_Addr[ADDRESS_WIDTH-1..0]" (rect 129 27 311 39)(font "Arial" ))
 		(line (pt 304 32)(pt 288 32)(line_width 3))
 	)
 	(port
 		(pt 304 48)
 		(output)
 		(text "Dump_Active" (rect 0 0 67 12)(font "Arial" ))
-		(text "Dump_Active" (rect 227 43 283 55)(font "Arial" ))
+		(text "Dump_Active" (rect 227 43 294 55)(font "Arial" ))
 		(line (pt 304 48)(pt 288 48))
 	)
 	(port
 		(pt 304 64)
 		(output)
 		(text "Dump_Done" (rect 0 0 61 12)(font "Arial" ))
-		(text "Dump_Done" (rect 232 59 283 71)(font "Arial" ))
+		(text "Dump_Done" (rect 232 59 293 71)(font "Arial" ))
 		(line (pt 304 64)(pt 288 64))
 	)
 	(parameter
@@ -614,12 +630,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "Data_Path_Control[13..0]" (rect 698 208 823 220)(font "Arial" ))
-	(pt 688 224)
-	(pt 816 224)
-	(bus)
-)
-(connector
 	(pt 760 560)
 	(pt 824 560)
 	(bus)
@@ -632,11 +642,6 @@ applicable agreement for further details.
 (connector
 	(pt 824 432)
 	(pt 1016 432)
-	(bus)
-)
-(connector
-	(pt 1280 432)
-	(pt 1232 432)
 	(bus)
 )
 (connector
@@ -727,11 +732,6 @@ applicable agreement for further details.
 	(pt 200 192)
 )
 (connector
-	(text "Dump Active" (rect 63 176 127 188)(font "Arial" ))
-	(pt 128 192)
-	(pt 88 192)
-)
-(connector
 	(pt 176 384)
 	(pt 408 384)
 )
@@ -742,29 +742,6 @@ applicable agreement for further details.
 (connector
 	(pt 176 384)
 	(pt 176 512)
-)
-(connector
-	(text "Dump Active" (rect 766 384 830 396)(font "Arial" ))
-	(pt 712 400)
-	(pt 888 400)
-)
-(connector
-	(text "Data_Path_Control[12]" (rect 307 384 419 396)(font "Arial" ))
-	(pt 344 400)
-	(pt 408 400)
-)
-(connector
-	(text "<<__$DEF_ALIAS1600>>" (rect 840 456 963 468)(font "Arial" )(invisible))
-	(pt 888 448)
-	(pt 1016 448)
-)
-(connector
-	(pt 888 392)
-	(pt 888 400)
-)
-(connector
-	(pt 888 400)
-	(pt 888 448)
 )
 (connector
 	(pt 832 368)
@@ -781,8 +758,72 @@ applicable agreement for further details.
 	(pt 744 384)
 	(bus)
 )
+(connector
+	(pt 888 392)
+	(pt 888 400)
+)
+(connector
+	(pt 712 400)
+	(pt 776 400)
+)
+(connector
+	(pt 776 400)
+	(pt 888 400)
+)
+(connector
+	(text "Dump_Active" (rect 63 176 130 188)(font "Arial" ))
+	(pt 128 192)
+	(pt 88 192)
+)
+(connector
+	(text "Dump_Active" (rect 752 405 764 472)(font "Arial" )(vertical))
+	(pt 776 400)
+	(pt 776 440)
+)
+(connector
+	(text "Data_Path_Control[12]" (rect 898 432 1010 444)(font "Arial" ))
+	(pt 888 448)
+	(pt 1016 448)
+)
+(connector
+	(text "Data_Path_Control[13..0]" (rect 698 208 823 220)(font "Arial" ))
+	(pt 688 224)
+	(pt 768 224)
+	(bus)
+)
+(connector
+	(pt 768 224)
+	(pt 816 224)
+	(bus)
+)
+(connector
+	(pt 768 224)
+	(pt 768 248)
+)
+(connector
+	(text "Data_Path_Control[13]" (rect 768 232 880 244)(font "Arial" ))
+	(pt 768 248)
+	(pt 832 248)
+)
+(connector
+	(text "Data_Path_Control[13]" (rect 307 384 419 396)(font "Arial" ))
+	(pt 344 400)
+	(pt 408 400)
+)
+(connector
+	(pt 1232 432)
+	(pt 1280 432)
+	(bus)
+)
+(connector
+	(pt 1280 432)
+	(pt 1376 432)
+	(bus)
+)
 (junction (pt 816 224))
 (junction (pt 176 512))
 (junction (pt 176 384))
 (junction (pt 176 224))
-(junction (pt 888 400))
+(junction (pt 776 400))
+(junction (pt 768 224))
+(junction (pt 1280 432))
