@@ -21,7 +21,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.4"))
 (pin
 	(input)
-	(rect -32 216 144 232)
+	(rect 8 216 184 232)
 	(text "INPUT" (rect 133 0 161 10)(font "Arial" (font_size 6)))
 	(text "Clk" (rect 9 0 25 12)(font "Arial" ))
 	(pt 176 8)
@@ -34,7 +34,7 @@ applicable agreement for further details.
 		(line (pt 117 12)(pt 121 8))
 	)
 	(text "GND" (rect 136 7 157 17)(font "Arial" (font_size 6)))
-	(annotation_block (location)(rect -88 232 -32 248))
+	(annotation_block (location)(rect 8 232 64 248))
 )
 (pin
 	(output)
@@ -134,7 +134,7 @@ applicable agreement for further details.
 )
 (pin
 	(output)
-	(rect 1376 424 1552 440)
+	(rect 1232 424 1408 440)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "Memory[7..0]" (rect 90 0 156 12)(font "Arial" ))
 	(pt 0 8)
@@ -259,10 +259,10 @@ applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 392 192))
 	)
-	(annotation_block (parameter)(rect 184 672 352 736))
+	(annotation_block (parameter)(rect 384 624 552 688))
 )
 (symbol
-	(rect 1016 400 1232 528)
+	(rect 968 400 1184 528)
 	(text "Main_Memory" (rect 67 0 163 16)(font "Arial" (font_size 10)))
 	(text "inst2" (rect 8 112 31 124)(font "Arial" ))
 	(port
@@ -446,7 +446,7 @@ applicable agreement for further details.
 	(annotation_block (parameter)(rect 824 264 952 292))
 )
 (symbol
-	(rect 216 192 280 240)
+	(rect 256 192 320 240)
 	(text "AND2" (rect 1 0 25 10)(font "Arial" (font_size 6)))
 	(text "inst6" (rect 3 37 26 49)(font "Arial" ))
 	(port
@@ -478,7 +478,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 128 176 176 208)
+	(rect 168 176 216 208)
 	(text "NOT" (rect 1 0 21 10)(font "Arial" (font_size 6)))
 	(text "inst7" (rect 3 21 26 33)(font "Arial" ))
 	(port
@@ -574,17 +574,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(text "OP_Code[2..0]" (rect 304 248 377 260)(font "Arial" ))
-	(pt 320 240)
-	(pt 368 240)
-	(bus)
-)
-(connector
-	(pt 352 576)
-	(pt 176 576)
-	(bus)
-)
-(connector
 	(pt 928 624)
 	(pt 760 624)
 	(bus)
@@ -625,54 +614,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 176 576)
-	(pt 176 760)
-	(bus)
-)
-(connector
-	(pt 760 560)
-	(pt 824 560)
-	(bus)
-)
-(connector
-	(pt 824 560)
-	(pt 824 432)
-	(bus)
-)
-(connector
-	(pt 824 432)
-	(pt 1016 432)
-	(bus)
-)
-(connector
-	(pt 176 760)
-	(pt 1280 760)
-	(bus)
-)
-(connector
-	(pt 1280 760)
-	(pt 1280 432)
-	(bus)
-)
-(connector
-	(pt 352 560)
-	(pt 176 560)
-)
-(connector
-	(pt 176 512)
-	(pt 1016 512)
-)
-(connector
-	(pt 176 512)
-	(pt 176 560)
-)
-(connector
-	(text "Addr_Sel[4..0]" (rect 955 472 1024 484)(font "Arial" ))
-	(pt 1016 464)
-	(pt 968 464)
-	(bus)
-)
-(connector
 	(text "Data_Addr[4..0]" (rect 808 560 885 572)(font "Arial" ))
 	(pt 760 576)
 	(pt 864 576)
@@ -700,48 +641,8 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 144 224)
-	(pt 176 224)
-)
-(connector
-	(pt 176 224)
-	(pt 216 224)
-)
-(connector
-	(pt 280 216)
-	(pt 344 216)
-)
-(connector
-	(pt 344 216)
-	(pt 344 224)
-)
-(connector
 	(pt 368 224)
 	(pt 344 224)
-)
-(connector
-	(pt 200 208)
-	(pt 216 208)
-)
-(connector
-	(pt 200 192)
-	(pt 176 192)
-)
-(connector
-	(pt 200 208)
-	(pt 200 192)
-)
-(connector
-	(pt 176 384)
-	(pt 408 384)
-)
-(connector
-	(pt 176 224)
-	(pt 176 384)
-)
-(connector
-	(pt 176 384)
-	(pt 176 512)
 )
 (connector
 	(pt 832 368)
@@ -771,19 +672,9 @@ applicable agreement for further details.
 	(pt 888 400)
 )
 (connector
-	(text "Dump_Active" (rect 63 176 130 188)(font "Arial" ))
-	(pt 128 192)
-	(pt 88 192)
-)
-(connector
 	(text "Dump_Active" (rect 752 405 764 472)(font "Arial" )(vertical))
 	(pt 776 400)
 	(pt 776 440)
-)
-(connector
-	(text "Data_Path_Control[12]" (rect 898 432 1010 444)(font "Arial" ))
-	(pt 888 448)
-	(pt 1016 448)
 )
 (connector
 	(text "Data_Path_Control[13..0]" (rect 698 208 823 220)(font "Arial" ))
@@ -811,19 +702,135 @@ applicable agreement for further details.
 	(pt 408 400)
 )
 (connector
-	(pt 1232 432)
-	(pt 1280 432)
+	(pt 352 560)
+	(pt 216 560)
+)
+(connector
+	(pt 352 576)
+	(pt 216 576)
 	(bus)
 )
 (connector
-	(pt 1280 432)
-	(pt 1376 432)
+	(pt 344 224)
+	(pt 344 216)
+)
+(connector
+	(pt 240 208)
+	(pt 240 192)
+)
+(connector
+	(pt 408 384)
+	(pt 216 384)
+)
+(connector
+	(pt 240 208)
+	(pt 256 208)
+)
+(connector
+	(text "Dump_Active" (rect 103 176 170 188)(font "Arial" ))
+	(pt 128 192)
+	(pt 168 192)
+)
+(connector
+	(pt 216 224)
+	(pt 216 384)
+)
+(connector
+	(pt 216 224)
+	(pt 256 224)
+)
+(connector
+	(pt 320 216)
+	(pt 344 216)
+)
+(connector
+	(pt 216 192)
+	(pt 240 192)
+)
+(connector
+	(pt 184 224)
+	(pt 216 224)
+)
+(connector
+	(pt 360 240)
+	(pt 360 248)
+	(bus)
+)
+(connector
+	(pt 368 240)
+	(pt 360 240)
+	(bus)
+)
+(connector
+	(text "OP_Code[2..0]" (rect 296 256 369 268)(font "Arial" ))
+	(pt 360 248)
+	(pt 312 248)
+	(bus)
+)
+(connector
+	(pt 216 576)
+	(pt 216 760)
+	(bus)
+)
+(connector
+	(text "Addr_Sel[4..0]" (rect 907 472 976 484)(font "Arial" ))
+	(pt 968 464)
+	(pt 920 464)
+	(bus)
+)
+(connector
+	(pt 216 512)
+	(pt 968 512)
+)
+(connector
+	(pt 216 760)
+	(pt 1208 760)
+	(bus)
+)
+(connector
+	(pt 1208 760)
+	(pt 1208 432)
+	(bus)
+)
+(connector
+	(pt 216 384)
+	(pt 216 512)
+)
+(connector
+	(pt 216 512)
+	(pt 216 560)
+)
+(connector
+	(pt 1208 432)
+	(pt 1232 432)
+	(bus)
+)
+(connector
+	(pt 1184 432)
+	(pt 1208 432)
+	(bus)
+)
+(connector
+	(text "Mem_In[7..0]" (rect 783 544 847 556)(font "Arial" ))
+	(pt 760 560)
+	(pt 824 560)
+	(bus)
+)
+(connector
+	(text "Data_Path_Control[12]" (rect 874 432 986 444)(font "Arial" ))
+	(pt 968 448)
+	(pt 864 448)
+)
+(connector
+	(text "Mem_In[7..0]" (rect 910 416 974 428)(font "Arial" ))
+	(pt 968 432)
+	(pt 872 432)
 	(bus)
 )
 (junction (pt 816 224))
-(junction (pt 176 512))
-(junction (pt 176 384))
-(junction (pt 176 224))
 (junction (pt 776 400))
 (junction (pt 768 224))
-(junction (pt 1280 432))
+(junction (pt 216 384))
+(junction (pt 216 512))
+(junction (pt 216 224))
+(junction (pt 1208 432))
