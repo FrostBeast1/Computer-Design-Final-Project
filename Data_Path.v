@@ -26,6 +26,15 @@ module Data_Path #(
 	assign PC_test = PC;
 	assign IR_test = IR;
 	assign Z_Out = Z;
+
+	initial begin
+    	AC = {WORD_WIDTH{1'b0}};
+    	DR = {WORD_WIDTH{1'b0}};
+    	AR = {ADDRESS_WIDTH{1'b0}};
+    	PC = {ADDRESS_WIDTH{1'b0}};
+    	IR = {OP_CODE_WIDTH{1'b0}};
+    	Z = 1'b0;
+	end
 	
 	input Clk;
 	input [CONTROL_WIDTH - 1 : 0] Control_Bus;
@@ -45,6 +54,7 @@ module Data_Path #(
 	
 	// Assigning buffers based on control signals
 	// Exact layout of control signals bound to change
+	wire MEMBus, ARld, PCld, PCInc, PCBus, DRld, DRBus, ACld, IRld;
 	wire [1 : 0] ALUSel;
 	assign {MEMBus, ARld, PCld, PCInc, PCBus, DRld, DRBus, ALUSel, ACld, IRld} = Control_Bus;
 	
@@ -84,7 +94,7 @@ module Data_Path #(
 			//Data_Bus = {{OP_CODE_WIDTH{1'b0}}, PC};
 			
 			//fetch 1
-			if (ARld) AR <= Data_Bus;
+			if (ARld) AR <= Data_Bus[ADDRESS_WIDTH - 1 : 0];
 				
 		end else if (DRBus) begin
 			
